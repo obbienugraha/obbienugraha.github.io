@@ -1,0 +1,1662 @@
+/* ===== Extracted from inline <style> blocks ===== */
+
+
+        :root {
+            --primary: #6a57ff;
+            --secondary: #3f37c9;
+            --success: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --info: #17a2b8;
+            --selected-row: rgba(106, 87, 255, 0.1);
+            --settings-bg: #EBEBEB;
+            --green-highlight: #6a57ff;
+            --green-highlight-active: #9380FF;
+            --pastel-green: #d1f2eb;
+            --half-highlight: #fff8e1;
+            --half-cell-color: #ff6f00;
+            --bg-color: #f5f7fb;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --switch-active: #9380FF;
+            --switch-inactive: #ccc;
+            /* colour used when a row has been marked as transferred via the left apple‑style switch. */
+            --switch-transferred: #e74c3c;
+            /* pale background colour for rows flagged as transferred */
+            --transferred-row: #fff5f5;
+            --table-header: #6c63ff;
+            --table-hover: #f0f3ff;
+            --text-block-click: #9380FF;
+            --text-block-text: #ffffff;
+            --group-row-bg: #CCCCFF;
+            --group-border: #9380FF;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body.dark-theme {
+            --bg-color: #1a1a1a;
+            --text-color: #f5f5f5;
+            --card-bg: #2d2d2d;
+        }
+        
+        .app-container {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: none;
+            margin-bottom: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-bg);
+            transition: background-color 0.3s ease;
+        }
+        
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #eaeaea;
+            padding: 15px 20px;
+            font-weight: 600;
+            color: var(--text-color);
+            border-radius: 12px 12px 0 0 !important;
+            transition: background-color 0.3s ease;
+        }
+        
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(106, 87, 255, 0.25);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            border-radius: 8px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(106, 87, 255, 0.3);
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+            border-color: var(--success);
+            border-radius: 8px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(76, 201, 240, 0.3);
+        }
+        
+        .btn-danger {
+            border-radius: 8px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+        }
+        
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            border-radius: 8px;
+            padding: 10px 20px;
+            color: #212529;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-warning:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+        }
+        
+        .table th {
+            background-color: #f5f7fb;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .table td {
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .currency-input {
+            position: relative;
+            min-width: 120px;
+            max-width: 600px;
+        }
+        
+        .currency-input:before {
+            content: 'Rp';
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            font-weight: 500;
+            color: var(--gray);
+            z-index: 1;
+        }
+        
+        .currency-input input {
+            padding-left: 40px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-size: 14px;
+        }
+        
+        /* Ubah font judul BKU ARKAS menjadi Linotte Bold dan posisi center */
+        .main-title {
+            font-family: 'Linotte', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .main-title img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        
+        .table-responsive {
+            max-height: 500px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+        .input-group-text {
+            background-color: #f8f9fa;
+            font-size: 14px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .btn-group-custom {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .empty-state img {
+            width: 120px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        
+        .empty-state p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .upload-excel-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .upload-excel-btn:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(106, 87, 255, 0.3);
+        }
+        
+        .upload-excel-btn i {
+            font-size: 18px;
+        }
+        
+        .settings-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--settings-bg);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .settings-btn:hover {
+            background-color: #dcdcdc;
+            transform: scale(1.05);
+        }
+        
+        .settings-btn img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .export-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--settings-bg);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .export-btn:hover {
+            background-color: #dcdcdc;
+            transform: scale(1.05);
+        }
+        
+        .export-btn img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .table-actions {
+            white-space: nowrap;
+        }
+        
+        .table-actions .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            margin-right: 5px;
+            transition: all 0.2s ease;
+        }
+        
+        .table-actions .btn:hover {
+            transform: translateY(-1px);
+        }
+        
+        /* Header tabel dengan rounded corners, warna biru (#6c63ff) dan teks putih bold */
+        .table-header-custom th {
+            background-color: #6c63ff;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            top: 0;
+            z-index: 10;
+            border: none;
+            padding: 15px;
+        }
+        
+        /* Rounded corners untuk header tabel */
+        .table-header-custom th:first-child {
+            border-top-left-radius: 10px;
+        }
+        
+        .table-header-custom th:last-child {
+            border-top-right-radius: 10px;
+        }
+        
+        .no-data-message {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            font-style: italic;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .custom-confirm {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .confirm-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .confirm-header {
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .confirm-body {
+            margin-bottom: 20px;
+        }
+        
+        .confirm-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .objek-text {
+            font-size: 13px;
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #f8f9fa;
+            width: 100%;
+        }
+        
+        .volume-input {
+            width: 50px;
+            text-align: center;
+            font-size: 13px;
+            padding: 8px 5px;
+        }
+        
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .row-equal {
+            display: flex;
+            gap: 0px;
+            margin-bottom: 20px;
+        }
+        
+        .col-equal {
+            flex:1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Perubahan untuk lebar card RKAS - diperlebar 15% */
+        .col-rkas {
+            flex: 0 0 66%;
+            max-width: 66%;
+        }
+        
+        .col-arkas {
+            flex: 0 0 32.5%;
+            max-width: 32.5%;
+        }
+        
+        .col-shift-right {
+            margin-left: 20px;
+        }
+        
+        .col-small {
+            width: 8%;
+        }
+        
+        .col-medium {
+            width: 7%;
+        }
+        
+        .col-large {
+            width: 10%;
+        }
+        
+        .col-xlarge {
+            width: 25%;
+        }
+        
+        .col-xxlarge {
+            width: 42%;
+        }
+        
+        .col-nama {
+            width: 15%;
+        }
+        
+        .saved-card-container {
+            position: relative;
+        }
+        
+        /* Floating buttons for scroll */
+        .scroll-buttons {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .scroll-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-btn:hover {
+            background-color: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .scroll-btn img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Adjust column widths for RKAS table */
+        .rkas-table th:nth-child(1), /* Checkbox */
+        .rkas-table td:nth-child(1) {
+            width: 5%;
+        }
+        
+        .rkas-table th:nth-child(2), /* RINCIAN */
+        .rkas-table td:nth-child(2) {
+            width: 50%; /* Diperlebar dari 53% */
+        }
+        
+        .rkas-table th:nth-child(3), /* VOLUME */
+        .rkas-table td:nth-child(3) {
+            width: 5%;
+        }
+        
+        .rkas-table th:nth-child(4), /* OBJEK */
+        .rkas-table td:nth-child(4) {
+            width: 20%;
+        }
+        
+        .rkas-table th:nth-child(5), /* HARGA SATUAN/NAMA BULAN */
+        .rkas-table td:nth-child(5) {
+            width: 15%; /* Dipersempit dari 22% */
+        }
+        
+        .rkas-table th:nth-child(6), /* Checkbox kanan */
+        .rkas-table td:nth-child(6) {
+            width: 10%;
+        }
+        
+        /* Edit Modal Styles */
+        .edit-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+        
+        .edit-modal-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .edit-modal-header {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: var(--primary);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .edit-modal-body {
+            margin-bottom: 20px;
+        }
+        
+        .edit-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        /* DataTables empty message styling */
+        .dataTables_empty {
+            display: none !important;
+        }
+        
+        /* Tabel tanpa pagination */
+        .simple-table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
+        
+        .simple-table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .simple-table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+        
+        /* Selected row styling */
+        .simple-table tbody tr.selected {
+            background-color: var(--selected-row);
+            transition: background-color 0.3s ease;
+        }
+        
+        .simple-table tbody tr:hover {
+            background-color: rgba(106, 87, 255, 0.05);
+            cursor: pointer;
+        }
+
+        /* Styling for RKAS rows that have been transferred via the apple‑switch */
+        .rkas-table tbody tr.transferred {
+            background-color: var(--transferred-row);
+            border-left: 4px solid var(--switch-transferred);
+        }
+        /* Colour only the rincian (item description) text when transferred */
+        .rkas-table tbody tr.transferred .rincian-text {
+            color: var(--switch-transferred);
+            font-weight: 600;
+        }
+
+        /*
+         * When a row is marked as transferred via the left apple‑style switch
+         * it should completely override any zebra striping applied by the
+         * `.table-striped` class. Without this override the alternating
+         * background colours can bleed through and make the red highlight
+         * appear patchy. Applying the colour to both the row and its
+         * individual cells with `!important` ensures our pale red tone
+         * takes precedence over bootstrap's styles.
+         */
+        .table-striped > tbody > tr.transferred,
+        .table-striped > tbody > tr.transferred > td {
+            background-color: var(--transferred-row) !important;
+        }
+        
+        /* Search box styling */
+        .search-container {
+            position: relative;
+        }
+        
+        .search-input {
+            border-radius: 20px;
+            padding-left: 40px;
+            padding-right: 20px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(106, 87, 255, 0.25);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        /* Loading animation styles */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .loading-spinner {
+            width: 70px;
+            height: 70px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+        
+        .loading-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Success animation styles */
+        .success-animation {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 100001;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .success-animation.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            color: var(--success);
+            margin-bottom: 15px;
+        }
+        
+        .success-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* Settings Modal Styles */
+        .settings-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+        
+        .settings-modal-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .settings-modal-header {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: var(--primary);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .settings-modal-body {
+            margin-bottom: 20px;
+        }
+        
+        .settings-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .settings-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+        }
+        
+        .settings-textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(106, 87, 255, 0.25);
+            outline: none;
+        }
+        
+        .settings-btn-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            color: var(--dark);
+        }
+        
+        /* Autofill dropdown styles */
+        .autofill-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .autofill-dropdown.show {
+            display: block;
+        }
+        
+        .autofill-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .autofill-item:hover {
+            background-color: #f5f7fb;
+        }
+        
+        .autofill-item.highlighted {
+            background-color: rgba(106, 87, 255, 0.1);
+        }
+        
+        .uraian-container {
+            position: relative;
+        }
+        
+        /* Tambahkan indikator visual untuk baris yang bisa diklik */
+        .rkas-table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .rkas-table tbody tr:hover {
+            background-color: var(--table-hover);
+        }
+        
+        .rkas-table tbody tr:active {
+            background-color: var(--table-hover);
+        }
+        
+        /* Total row styling */
+        .total-row {
+            font-weight: 600;
+            background-color: #f8f9fa;
+        }
+        
+        .total-row td {
+            border-top: 2px solid var(--primary);
+        }
+        
+        .total-label {
+            text-align: right;
+            font-weight: 600;
+        }
+        
+        .total-value {
+            text-align: right;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Selected checkbox notification */
+        .selected-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .selected-notification.show {
+            display: flex;
+        }
+        
+        .selected-notification i {
+            font-size: 18px;
+        }
+        
+        /* Style for rincian cell when textbox is hidden */
+        .rincian-display {
+            padding: 8px 10px;
+            border-radius: 6px;
+            background-color: #f8f9fa;
+            width: 100%;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Highlight untuk sel dengan nilai "•" */
+        .bullet-cell {
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: var(--green-highlight) !important;
+        }
+        
+        /* Style untuk rincian yang mengandung "•" */
+        .rincian-bullet {
+            padding: 8px 10px;
+            border-radius: 6px;
+            background-color: var(--green-highlight);
+            width: 100%;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        /* Month filter styling */
+        .month-filter {
+            margin-bottom: 15px;
+        }
+        
+        .month-filter-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .month-filter .form-label {
+            margin-bottom: 0;
+            margin-right: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .month-total {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .month-total-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+        
+        .month-total-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Hidden volume cell styling */
+        .volume-hidden {
+            display: none;
+        }
+        
+        /* Hidden objek cell styling */
+        .objek-hidden {
+            display: none;
+        }
+        
+        /* Merged rincian cell styling */
+        .rincian-merged {
+            padding: 8px 10px;
+            border-radius: 6px;
+            background-color: var(--green-highlight);
+            width: 100%;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        /* Month header styling */
+        .month-header {
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: var(--green-highlight);
+        }
+        
+        /* Checkbox styling */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Form row styling for Arkas */
+        .form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .form-col {
+            flex: 1;
+        }
+        
+        /* Belanja dropdown styling */
+        .belanja-select {
+            width: 100%;
+        }
+        
+        /* Styling for saved table with autofit */
+        .simple-table th {
+            white-space: nowrap;
+        }
+        
+        .simple-table td {
+            white-space: nowrap;
+        }
+        
+        /* Apple-style switch button - FIXED */
+        .apple-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            background-color: var(--switch-inactive);
+            border-radius: 24px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        
+        .apple-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .apple-switch-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        input:checked + .apple-switch-slider {
+            transform: translateX(26px);
+        }
+        
+        /* Background merah saat apple switch aktif */
+        input:checked ~ .apple-switch {
+            background-color: var(--switch-transferred) !important;
+        }
+        
+        /* Highlight baris dengan background merah saat apple switch aktif */
+        .rkas-table tbody tr.transferred {
+            background-color: var(--transferred-row) !important;
+            border-left: 4px solid var(--switch-transferred);
+        }
+        
+        /* Pastikan warna tidak tertimpa oleh stripe tabel */
+        .table-striped > tbody > tr.transferred,
+        .table-striped > tbody > tr.transferred > td {
+            background-color: var(--transferred-row) !important;
+        }
+        
+        /* Theme toggle button */
+        .theme-toggle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--settings-bg);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .theme-toggle-btn:hover {
+            background-color: #dcdcdc;
+            transform: scale(1.05);
+        }
+        
+        .theme-toggle-btn img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Dark theme adjustments */
+        body.dark-theme .card {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-theme .card-header {
+            background-color: #2d2d2d;
+            border-bottom: 1px solid #444;
+        }
+        
+        body.dark-theme .table th {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+        
+        body.dark-theme .form-control,
+        body.dark-theme .form-select {
+            background-color: #333;
+            color: #f5f5f5;
+            border-color: #555;
+        }
+        
+        body.dark-theme .form-control:focus,
+        body.dark-theme .form-select:focus {
+            background-color: #333;
+            color: #f5f5f5;
+            border-color: var(--primary);
+        }
+        
+        body.dark-theme .table {
+            color: #f5f5f5;
+        }
+        
+        body.dark-theme .table td {
+            border-color: #444;
+        }
+        
+        body.dark-theme .search-input {
+            background-color: #333;
+            color: #f5f5f5;
+            border-color: #555;
+        }
+        
+        body.dark-theme .search-input:focus {
+            background-color: #333;
+            color: #f5f5f5;
+            border-color: var(--primary);
+        }
+        
+        /* Search and filter layout - DIPERBAIKI dengan autofit */
+        .search-filter-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        
+        .search-filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .filter-box {
+            flex: 0 0 auto;
+        }
+        
+        .filter-total {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .filter-total-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+        
+        .filter-total-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Header styling for Arkas card with buttons */
+        .arkas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .arkas-title {
+            margin: 0;
+        }
+        
+        .arkas-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* RKAS header styling with search and export button */
+        .rkas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .rkas-title {
+            margin: 0;
+        }
+        
+        .rkas-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        /* Month filter card styling */
+        .month-filter-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: none;
+            margin-bottom: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease;
+        }
+        
+        .month-filter-card .card-header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #eaeaea;
+            padding: 15px 20px;
+            font-weight: 600;
+            color: var(--text-color);
+            border-radius: 12px 12px 0 0 !important;
+            transition: background-color 0.3s ease;
+        }
+        
+        .month-filter-card .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .search-filter-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .filter-total {
+                align-items: flex-start;
+                margin-top: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 1.8rem;
+            }
+            
+            .main-title img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .col-rkas, .col-arkas {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            
+            .col-shift-right {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            
+            .rkas-controls {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .search-filter-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        /* Group row styling */
+        .group-row {
+            background-color: var(--group-row-bg);
+            border-left: 4px solid var(--group-border);
+        }
+        
+        .group-cell {
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 12px 15px;
+            color: #333;
+            background-color: #CCCCFF; /* Sesuai permintaan */
+        }
+        
+        /* Table Responsive v2 Styles */
+        .table-responsive-v2 {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+        
+        .table-responsive-v2 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table-responsive-v2 table thead {
+            background: var(--table-header);
+            color: #fff;
+        }
+        
+        .table-responsive-v2 table thead th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        /* Hapus warna latar untuk baris genap agar tampilan sel lebih bersih */
+        .table-responsive-v2 table tbody tr:nth-child(even) {
+            background-color: transparent;
+        }
+        
+        .table-responsive-v2 table tbody tr:hover {
+            background-color: var(--table-hover);
+        }
+        
+        .table-responsive-v2 table tbody td {
+            padding: 15px;
+            font-size: 14px;
+            color: #666;
+            vertical-align: middle;
+        }
+        
+        .table-responsive-v2 table tbody td:first-child {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .table-responsive-v2 .column1 {
+            width: 5%;
+            text-align: center;
+        }
+        
+        .table-responsive-v2 .column2 {
+            width: 45%;
+        }
+        
+        .table-responsive-v2 .column3 {
+            width: 10%;
+            text-align: center;
+        }
+        
+        .table-responsive-v2 .column4 {
+            width: 15%;
+            text-align: right;
+        }
+        
+        .table-responsive-v2 .column5 {
+            width: 15%;
+            text-align: right;
+        }
+        
+        .table-responsive-v2 .column6 {
+            width: 10%;
+            text-align: center;
+        }
+        
+        .table-responsive-v2 .apple-switch {
+            display: inline-block;
+            margin: 0 auto;
+        }
+        
+        .table-responsive-v2 .checkbox-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .table-responsive-v2 .form-check-input {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .table-responsive-v2 .rincian-text {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .table-responsive-v2 .volume-text {
+            font-weight: 500;
+            color: #666;
+        }
+        
+        .table-responsive-v2 .objek-text {
+            font-weight: 500;
+            color: #666;
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 8px 10px;
+        }
+        
+        .table-responsive-v2 .harga-text {
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        .table-responsive-v2 .group-row {
+            background-color: var(--group-row-bg);
+            color: #333;
+            border-left: 4px solid var(--group-border);
+        }
+        
+        .table-responsive-v2 .group-cell {
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 15px;
+            background-color: #CCCCFF; /* Sesuai permintaan */
+        }
+        
+        /* Text block click styles */
+        .text-block-click {
+            background-color: var(--text-block-click);
+            color: var(--text-block-text);
+        }
+        
+        /* Responsive for mobile */
+        @media screen and (max-width: 768px) {
+            .table-responsive-v2 {
+                padding: 10px;
+            }
+            
+            .table-responsive-v2 table thead th {
+                padding: 10px 5px;
+                font-size: 12px;
+            }
+            
+            .table-responsive-v2 table tbody td {
+                padding: 10px 5px;
+                font-size: 12px;
+            }
+        }
+        
+        /* Gabungkan button styles - DIPINDAHKAN TEPAT DI BAWAH selected-notification */
+        .gabungkan-btn {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            display: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .gabungkan-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+        }
+        
+        .gabungkan-btn.show {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Gabungkan Modal Styles - CENTERED */
+        .gabungkan-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            display: none;
+        }
+        
+        .gabungkan-modal-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+        }
+        
+        .gabungkan-modal-header {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: var(--primary);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .gabungkan-modal-body {
+            margin-bottom: 20px;
+        }
+        
+        .gabungkan-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        /* === Sub Uraian (auto from RKAS selection) === */
+        .sub-uraian-item { gap: .25rem; }
+        .sub-uraian-item .input-group-text { min-width: 36px; justify-content:center; }
+        #subUraianList { max-height: 180px; overflow:auto; padding: .25rem .25rem; background: var(--light, #f8f9fa); border-radius:.5rem; }
+
+        /* Make the checkbox container obviously clickable */
+        .checkbox-container { cursor: pointer; user-select: none; }
+        
+        /* Upload file info styling */
+        .upload-file-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .upload-file-info i {
+            color: var(--primary);
+        }
+    
+
+
+/* Pastikan urutan z-index benar */
+.modal-backdrop { z-index: 1040 !important; }
+.modal.show { z-index: 1055 !important; }
+#subUraianModal { z-index: 1056 !important; }
+/* Custom overlay class */
+.gabungkan-modal { z-index: 1060 !important; }
+.gabungkan-modal .gabungkan-modal-content { position: relative; }
+
+
+
+/* Non-interaktifkan checkbox di Gabungkan Data */
+#gabungkanModal .row-checkbox-rkas-right {
+  pointer-events: none !important;
+  opacity: .5;
+}
+/* Sorot baris terpilih (tanpa checkbox) */
+#gabungkanModal table tbody tr.row-selected {
+  outline: 2px solid rgba(63, 55, 201, .35);
+  background: rgba(63, 55, 201, .08);
+}
+
+
+
+/* Force apple-switch shell to red when we programmatically mark it on */
+#excelDataTable .apple-switch.as-on {
+  background-color: var(--switch-transferred) !important;
+}
+#excelDataTable .apple-switch.as-on .apple-switch-slider {
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.22);
+}
+/* Keep transferred row clearly highlighted */
+#excelDataTable tbody tr.transferred td {
+  background: var(--transferred-row) !important;
+}

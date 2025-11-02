@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKU ✘ Arkas</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+    <!-- Import Linotte Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Linotte:wght@700&display=swap" rel="stylesheet">
+    
+    
+
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1 class="main-title">
+            <div style="display: flex; flex-direction: column; align-items: center; font-family: Arial, sans-serif;">
+                <!-- Bagian BKU - Logo - ARKAS -->
+                <div style="display: flex; justify-content: center; align-items: center; gap: 0px; font-weight: bold; font-size: 20px;">
+                    <span style="color: #A0A1A3;">BKU</span>
+                    <img src="https://img.icons8.com/?size=100&id=i3WO4Umw3ido&format=png&color=000000" 
+                         alt="Logo ARKAS" style="width: 50px; height: 50px;">
+                    <span style="color: #000000;">ARKAS</span>
+                </div>
+                <!-- Beta Version -->
+                <div style="margin-top: 5px; background: #FF9800; color: white; padding: 4px 12px; border-radius: 20px; font-size: 5px; font-weight: bold;">
+                    V.2.6.01
+                </div>
+            </div>
+        </h1>
+        
+        <div class="card-container">
+            <div class="row-equal">
+                <!-- Perubahan class untuk card RKAS -->
+                <div class="col-rkas">
+                    <div class="card">
+                        <!-- Perubahan header card RKAS -->
+                        <div class="card-header rkas-header">
+                            <h5 class="rkas-title">Data RKAS</h5>
+                            <div class="rkas-controls">
+                                <div class="search-container" style="width: auto;">
+                                    <i class="fas fa-search search-icon"></i>
+                                    <input type="text" class="form-control search-input" id="rkasSearchInput" placeholder="Cari data RKAS...">
+                                </div>
+                                <button class="export-btn" id="exportRKASBtn" title="Export Data RKAS">
+                                    <img src="https://img.icons8.com/?size=100&id=qCYMIYIBWpKt&format=png&color=000000" alt="Export">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- Search and filter container - DIPERBAIKI dengan autofit -->
+                            <div class="search-filter-container">
+                                <!-- Header dengan filter dan total -->
+                                <div class="search-filter-header">
+                                    <!-- Filter box -->
+                                    <div class="filter-box">
+                                        <div class="month-filter">
+                                            <label for="bulanFilter" class="form-label">Filter Bulan</label>
+                                            <select class="form-select" id="bulanFilter">
+                                                <option value="">-- Pilih Bulan --</option>
+                                                <option value="JANUARI">JANUARI</option>
+                                                <option value="FEBRUARI">FEBRUARI</option>
+                                                <option value="MARET">MARET</option>
+                                                <option value="APRIL">APRIL</option>
+                                                <option value="MEI">MEI</option>
+                                                <option value="JUNI">JUNI</option>
+                                                <option value="JULI">JULI</option>
+                                                <option value="AGUSTUS">AGUSTUS</option>
+                                                <option value="SEPTEMBER">SEPTEMBER</option>
+                                                <option value="OKTOBER">OKTOBER</option>
+                                                <option value="NOVEMBER">NOVEMBER</option>
+                                                <option value="DESEMBER">DESEMBER</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Total display - DIPERBAIKI dengan autofit -->
+                                    <div class="filter-total">
+                                        <div class="month-total">
+                                            <div class="month-total-label">Jumlah Bulan</div>
+                                            <div class="month-total-value" id="monthTotal">Rp 0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="emptyState" class="empty-state">
+                                <img src="https://64.media.tumblr.com/2e8986a1b1c062623cea1b9edaddcc52/tumblr_mup3qzOPsX1rk0k2jo1_500.gif" alt="Excel Icon" style="width: 120px; height: 100px;">
+                                <p>Belum ada data. Silakan upload file Excel untuk memulai.</p>
+                                <button class="upload-excel-btn" id="uploadFromEmpty">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    Upload File Excel
+                                </button>
+                                <div class="upload-file-info mt-3">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Format file yang didukung: .xlsx, .xls, .xlsm, .csv</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Regular Table View -->
+                            <div class="table-responsive" id="tableContainer" style="display: none;">
+                                <div class="table-responsive-v2">
+                                    <table id="excelDataTable" class="table table-hover rkas-table">
+                                        <thead class="table-header-custom">
+                                            <tr>
+                                                <th class="column1">
+                                                    <!-- Apple-style switch button - DIPERBAIKI (visual only) -->
+                                                    <label class="apple-switch">
+                                                        <input type="checkbox" id="selectAllRKAS">
+                                                        <span class="apple-switch-slider"></span>
+                                                    </label>
+                                                </th>
+                                                <th class="column2">RINCIAN</th>
+                                                <th class="column3">VOLUME</th>
+                                                <th class="column4">HARGA SATUAN</th>
+                                                <th class="column5" id="hargaHeader">BULAN</th>
+                                                <th class="column6">
+                                                    <div class="checkbox-container">
+                                                        <input type="checkbox" class="form-check-input custom-checkbox row-checkbox-rkas-right" id="selectAllRKASRight">
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Data akan dimuat di sini setelah upload -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="noDataMessage" class="no-data-message" style="display: none;">
+                                    Tidak ada data untuk bulan yang dipilih
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Perubahan class untuk card Arkas -->
+                <div class="col-arkas col-shift-right">
+                    <div class="card">
+                        <div class="card-header arkas-header">
+                            <h5 class="arkas-title">✘-Arkas</h5>
+                            <div class="arkas-buttons">
+                                <!-- Tombol theme toggle dipindahkan ke sini -->
+                                <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme">
+                                    <img src="https://img.icons8.com/?size=100&id=dBVjWcKd58RU&format=png&color=000000" alt="Day Theme" id="themeIcon">
+                                </button>
+                                <button class="settings-btn" id="settingsBtn" title="Pengaturan Autofill">
+                                    <img src="https://img.icons8.com/?size=100&id=aPtgRkkLiNl2&format=png&color=000000" alt="Settings">
+                                </button>
+                                <!-- New button to edit the list of Nama Pegawai & Belanja -->
+                                <button class="settings-btn" id="editListsBtn" title="Edit Nama &amp; Belanja">
+                                    <img src="https://img.icons8.com/?size=100&id=Oyrj07GHAVgu&format=png&color=000000" alt="Edit">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="transactionForm">
+                                <div class="form-row">
+                                    <div class="form-col">
+                                        <label for="noBukti" class="form-label">No Bukti</label>
+                                        <input type="text" class="form-control form-control-sm" id="noBukti" placeholder="Masukkan No Bukti">
+                                    </div>
+                                    <div class="form-col">
+                                        <label for="noKode" class="form-label">No Kode</label>
+                                        <input type="text" class="form-control form-control-sm" id="noKode" readonly>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-col">
+                                        <label for="tglLunas" class="form-label">Tanggal Lunas</label>
+                                        <input type="text" class="form-control form-control-sm" id="tglLunas" placeholder="05-02-1992">
+                                    </div>
+                                    <div class="form-col">
+                                        <label for="tglPembelian" class="form-label">Tanggal Pembelian/BKU</label>
+                                        <input type="text" class="form-control form-control-sm" id="tglPembelian" placeholder="05 Februari 1992">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="uraianTrans" class="form-label">Uraian</label>
+                                    <div class="uraian-container">
+                                        <textarea class="form-control form-control-sm" id="uraianTrans" rows="2"></textarea>
+                                        <div class="autofill-dropdown" id="uraianDropdown"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Sub Uraian (ditambahkan - multi) -->
+                                <div class="mb-3" id="subUraianBlock">
+                                    <label class="form-label fw-semibold">Sub Uraian</label>
+                                    <div id="subUraianList" class="d-flex flex-column gap-2"></div>
+                                    <input type="hidden" id="subUraianTrans" value="">
+                                    <small class="text-muted">Otomatis dari pilihan di tabel RKAS (bulan: <span id="bulanDipilihLabel">-</span>). Tiap baris bisa diedit/hapus.</small>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-col">
+                                        <label for="namaPegawai" class="form-label">Nama Pegawai</label>
+                                        <select class="form-select form-select-sm" id="namaPegawai">
+                                            <option value="">-- Pilih Nama --</option>
+                                            <option value="AGIS">AGIS</option>
+                                            <option value="ALIYAH">ALIYAH</option>
+                                            <option value="ANDI">ANDI</option>
+                                            <option value="CARINAH">CARINAH</option>
+                                            <option value="IKA">IKA</option>
+                                            <option value="ITA">ITA</option>
+                                            <option value="KARI">KARI</option>
+                                            <option value="LUD">LUD</option>
+                                            <option value="LUKMAN">LUKMAN</option>
+                                            <option value="MERRY">MERRY</option>
+                                            <option value="NINING">NINING</option>
+                                            <option value="OBBIE">OBBIE</option>
+                                            <option value="RINTO">RINTO</option>
+                                            <option value="RIYAH">RIYAH</option>
+                                            <option value="RIZKY">RIZKY</option>
+                                            <option value="SAEFUL">SAEFUL</option>
+                                            <option value="SUNINGSIH">SUNINGSIH</option>
+                                            <option value="SUTARNO">SUTARNO</option>
+                                            <option value="YOYOH">YOYOH</option>
+                                            <option value="YULIA">YULIA</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-col">
+                                        <label for="belanja" class="form-label">Belanja</label>
+                                        <select class="form-select form-select-sm belanja-select" id="belanja">
+                                            <option value="">-- Pilih Belanja --</option>
+                                            <option value="INDOMARET">INDOMARET</option>
+                                            <option value="MBAK ENY">MBAK ENY</option>
+                                            <option value="MyPLN">MyPLN</option>
+                                            <option value="NUGRAHA">NUGRAHA</option>
+                                            <option value="POS">POS</option>
+                                            <option value="PRISMA">PRISMA</option>
+                                            <option value="TAPSIR">TAPSIR</option>
+                                            <option value="TORI">TORI</option>
+                                            <option value="YOLA">YOLA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-col">
+                                        <label for="jumlah" class="form-label">Jumlah</label>
+                                        <div class="currency-input">
+                                            <input type="text" class="form-control form-control-sm" id="jumlah" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="action-buttons">
+                                    <button type="button" class="btn btn-primary" id="simpanBtn">
+                                        <i class="fas fa-save me-2"></i>Simpan
+                                    </button>
+                                    <button type="button" class="btn btn-danger" id="hapusBtn">
+                                        <i class="fas fa-trash me-2"></i>Hapus
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tabel Data Tersimpan -->
+            <div class="saved-card-container">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Data Tersimpan</h5>
+                        <div class="d-flex">
+                            <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-file-export me-2"></i>Export
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                                    <li><a class="dropdown-item" href="#" id="exportExcelBtn"><i class="fas fa-file-excel me-2"></i>Excel</a></li>
+                                    <li><a class="dropdown-item" href="#" id="exportPdfBtn"><i class="fas fa-file-pdf me-2"></i>PDF</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="search-container">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="form-control search-input" id="searchInput" placeholder="Cari data...">
+                        </div>
+                        <div class="table-responsive">
+                            <table id="savedTable" class="table table-hover simple-table">
+                                <thead>
+                                    <tr>
+                                        <th>No Bukti</th>
+                                        <th>No Kode</th>
+                                        <th>Tanggal Lunas</th>
+                                        <th>Tanggal Pembelian</th>
+                                        <th>Uraian</th>
+                                        <th>Jumlah</th>
+                                        <th>Nama Pegawai</th>
+                                        <th>Belanja</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="text-center">Tidak ada data</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="total-row" id="totalRow" style="display: none;">
+                                        <td colspan="5" class="total-label">Jumlah/Total</td>
+                                        <td class="total-value" id="totalAmount">Rp 0</td>
+                                        <td colspan="3"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating buttons for scroll -->
+        <div class="scroll-buttons">
+            <button class="scroll-btn" id="moveRowUp" title="Pindahkan ke Atas">
+                <img src="https://i.ibb.co.com/Sw4PHTg4/icons8-collapse-arrow-24.png" alt="Arrow Up">
+            </button>
+            <button class="scroll-btn" id="moveRowDown" title="Pindahkan ke Bawah">
+                <img src="https://i.ibb.co.com/84BHydMc/icons8-expand-arrow-24.png" alt="Arrow Down">
+            </button>
+        </div>
+        
+        <!-- Selected checkbox notification -->
+        <div class="selected-notification" id="selectedNotification">
+            <i class="fas fa-money-bill-wave"></i>
+            Total: <span id="selectedTotal">Rp 0</span>
+        </div>
+        
+        <!-- Gabungkan button dipindahkan tepat di bawah selected-notification -->
+        <button class="gabungkan-btn" id="gabungkanBtn">
+            <i class="fas fa-object-group"></i>
+            Gabungkan
+        </button>
+        
+        <!-- Hidden file input for upload -->
+        <input type="file" id="fileUpload" accept=".xlsx,.xls,.xlsm,.csv" style="display: none;">
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Memproses file Excel...</div>
+    </div>
+    
+    <!-- Success Animation -->
+    <div class="success-animation" id="successAnimation">
+        <i class="fas fa-check-circle success-icon"></i>
+        <div class="success-text">Berhasil!</div>
+    </div>
+    
+    <!-- Custom Confirm Modal -->
+    <div id="customConfirm" class="custom-confirm" style="display: none;">
+        <div class="confirm-content">
+            <div class="confirm-header" id="confirmTitle">Konfirmasi</div>
+            <div class="confirm-body" id="confirmMessage">Apakah Anda yakin ingin melanjutkan?</div>
+            <div class="confirm-footer">
+                <button class="btn btn-secondary" id="confirmCancel">Batal</button>
+                <button class="btn btn-danger" id="confirmOk">Hapus</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Modal -->
+    <div id="editModal" class="edit-modal" style="display: none;">
+        <div class="edit-modal-content">
+            <div class="edit-modal-header">
+                <i class="fas fa-edit me-2"></i>Edit Data
+            </div>
+            <div class="edit-modal-body">
+                <form id="editForm">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="editNoBukti" class="form-label">No Bukti</label>
+                            <input type="text" class="form-control form-control-sm" id="editNoBukti">
+                        </div>
+                        <div class="form-col">
+                            <label for="editNoKode" class="form-label">No Kode</label>
+                            <input type="text" class="form-control form-control-sm" id="editNoKode" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="editTglLunas" class="form-label">Tanggal Lunas</label>
+                            <input type="text" class="form-control form-control-sm" id="editTglLunas">
+                        </div>
+                        <div class="form-col">
+                            <label for="editTglPembelian" class="form-label">Tanggal Pembelian/BKU</label>
+                            <input type="text" class="form-control form-control-sm" id="editTglPembelian">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="editUraian" class="form-label">Uraian</label>
+                        <div class="uraian-container">
+                            <textarea class="form-control form-control-sm" id="editUraian" rows="2"></textarea>
+                            <div class="autofill-dropdown" id="editUraianDropdown"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="editNamaPegawai" class="form-label">Nama Pegawai</label>
+                            <select class="form-select form-select-sm" id="editNamaPegawai">
+                                <option value="">-- Pilih Nama --</option>
+                                <option value="CARINAH">CARINAH</option>
+                                <option value="ALIYAH">ALIYAH</option>
+                                <option value="OBBIE">OBBIE</option>
+                                <option value="IKA">IKA</option>
+                                <option value="YULIA">YULIA</option>
+                                <option value="RIYAH">RIYAH</option>
+                                <option value="RINTO">RINTO</option>
+                                <option value="ITA">ITA</option>
+                                <option value="MERRY">MERRY</option>
+                                <option value="AGIS">AGIS</option>
+                                <option value="SAEFUL">SAEFUL</option>
+                                <option value="RIZKY">RIZKY</option>
+                                <option value="ANDI">ANDI</option>
+                                <option value="LUD">LUD</option>
+                                <option value="SUNINGSIH">SUNINGSIH</option>
+                                <option value="NINING">NINING</option>
+                                <option value="KARI">KARI</option>
+                                <option value="YOYOH">YOYOH</option>
+                                <option value="SUTARNO">SUTARNO</option>
+                                <option value="LUKMAN">LUKMAN</option>
+                            </select>
+                        </div>
+                        <div class="form-col">
+                            <label for="editBelanja" class="form-label">Belanja</label>
+                            <select class="form-select form-select-sm belanja-select" id="editBelanja">
+                                <option value="">-- Pilih Belanja --</option>
+                                <option value="YOLA">YOLA</option>
+                                <option value="TAPSIR">TAPSIR</option>
+                                <option value="TORI">TORI</option>
+                                <option value="NUGRAHA">NUGRAHA</option>
+                                <option value="PRISMA">PRISMA</option>
+                                <option value="INDOMARET">INDOMARET</option>
+                                <option value="POS">POS</option>
+                                <option value="MyPLN">MyPLN</option>
+                                <option value="MBAK ENY">MBAK ENY</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="editJumlah" class="form-label">Jumlah</label>
+                            <div class="currency-input">
+                                <input type="text" class="form-control form-control-sm" id="editJumlah">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="edit-modal-footer">
+                <button type="button" class="btn btn-secondary" id="editCancel">Batal</button>
+                <button type="button" class="btn btn-primary" id="editSave">Simpan Perubahan</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gabungkan Modal - CENTERED -->
+    <div id="gabungkanModal" class="gabungkan-modal">
+        <div class="gabungkan-modal-content">
+            <div class="gabungkan-modal-header">
+                <i class="fas fa-object-group me-2"></i>Gabungkan Data
+            </div>
+            <div class="gabungkan-modal-body">
+                <form id="gabungkanForm">
+                    <div class="mb-3">
+                        <label for="jenisBelanja" class="form-label">Jenis Belanja</label>
+                        <!-- Wrap select and edit button in a flex container -->
+                        <div class="d-flex gap-2">
+                            <select class="form-select flex-grow-1" id="jenisBelanja" required>
+                                <option value="">-- Pilih Jenis Belanja --</option>
+                                <option value="Belanja ATK ADM">Belanja ATK ADM</option>
+                                <option value="Belanja ATK KBM">Belanja ATK KBM</option>
+                                <option value="Belanja Kebersihan">Belanja Kebersihan</option>
+                                <option value="Belanja Pembersih">Belanja Pembersih</option>
+                                <option value="Belanja Peralatan Komputer">Belanja Peralatan Komputer</option>
+                            </select>
+                            <!-- Edit button to add new options to the combobox -->
+                            <button type="button" class="btn btn-outline-secondary" id="editJenisBelanjaBtn" title="Edit Jenis Belanja">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger" id="deleteJenisBelanjaBtn" title="Hapus Jenis Belanja terpilih"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="totalGabungan" class="form-label">Total yang Digabungkan</label>
+                        <div class="currency-input">
+                            <input type="text" class="form-control" id="totalGabungan" readonly>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="gabungkan-modal-footer">
+                <button type="button" class="btn btn-secondary" id="gabungkanCancel">Batal</button>
+                <button type="button" class="btn btn-success" id="transferBtn">
+                    <i class="fas fa-file-import me-1"></i>Transfer
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Jenis Belanja Baru Modal (di atas Gabungkan Data) -->
+    <div id="jenisBelanjaModal" class="gabungkan-modal" style="display:none; z-index:10001;">
+        <div class="gabungkan-modal-content">
+            <div class="gabungkan-modal-header"><i class="fas fa-list me-2"></i>Jenis Belanja Baru</div>
+            <div class="gabungkan-modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Masukkan jenis belanja baru</label>
+                    <input type="text" class="form-control" id="jenisBelanjaBaruInput" placeholder="Contoh: BELANJA ATK ADM">
+                </div>
+            </div>
+            <div class="gabungkan-modal-footer">
+                <button type="button" class="btn btn-secondary" id="jenisBelanjaBatal">Batal</button>
+                <button type="button" class="btn btn-primary" id="jenisBelanjaTambah" onclick="return tambahJenisDanKembali(event);">Tambah</button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="settings-modal" style="display: none;">
+        <div class="settings-modal-content">
+            <div class="settings-modal-header">
+                <span>Pengaturan Autofill Uraian</span>
+                <button class="close-btn" id="settingsClose">&times;</button>
+            </div>
+            <div class="settings-modal-body">
+                <p>Masukkan frasa-frasa yang sering digunakan (satu frasa per baris):</p>
+                <textarea class="settings-textarea" id="autofillPhrases" placeholder="Contoh:&#10;Pembelian alat tulis kantor&#10;Biaya transportasi&#10;Pemeliharaan gedung"></textarea>
+            </div>
+            <div class="settings-modal-footer">
+                <button type="button" class="btn btn-danger" id="clearPhrasesBtn">
+                    <i class="fas fa-trash me-1"></i>Hapus
+                </button>
+                <button type="button" class="btn btn-primary" id="savePhrasesBtn">
+                    <i class="fas fa-save me-1"></i>Simpan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Lists Modal: allows editing of Nama Pegawai and Belanja selections -->
+    <div id="editListsModal" class="settings-modal" style="display:none;">
+        <div class="settings-modal-content">
+            <div class="settings-modal-header">
+                <span>Edit Nama Pegawai &amp; Belanja</span>
+                <button class="close-btn" id="editListsClose">&times;</button>
+            </div>
+            <div class="settings-modal-body">
+                <div class="mb-3">
+                    <label for="editNamaList" class="form-label">Daftar Nama Pegawai (satu per baris)</label>
+                    <textarea class="settings-textarea" id="editNamaList" placeholder="Contoh:&#10;AGIS&#10;ALIYAH"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="editBelanjaList" class="form-label">Daftar Belanja (satu per baris)</label>
+                    <textarea class="settings-textarea" id="editBelanjaList" placeholder="Contoh:&#10;INDOMARET&#10;MBAK ENY"></textarea>
+                </div>
+            </div>
+            <div class="settings-modal-footer">
+                <button type="button" class="btn btn-primary" id="saveListBtn">
+                    <i class="fas fa-save me-1"></i>Simpan
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sub Uraian Modal -->
+    <div class="modal fade" id="subUraianModal" tabindex="-1" aria-labelledby="subUraianModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="subUraianModalLabel">Sub Uraian</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table table-sm table-striped align-middle mb-0">
+                <thead>
+                    <tr>
+                    <th>URAIAN</th>
+                    <th>VOLUME</th>
+                    <th>HARGA SATUAN</th>
+                    <th>JUMLAH</th>
+                    </tr>
+                </thead>
+                <tbody id="subUraianModalTbody"></tbody>
+                </table>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Script Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/id.js"></script>
+    <!-- Use the minified build of xlsx-js-style. The previous path
+         pointed to xlsx.full.min.js which does not exist on jsDelivr.
+         Loading the correct file ensures the XLSX global is defined for
+         both reading and writing Excel files with styling. -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- SAFE OVERRIDE: switch to Tanggal Pembelian/BKU and force 'Tgl. dd-mm-yyyy' -->
+    
+
+    <!-- OVERRIDE V2: Force 'tgl. dd-mm-yyyy' from Tanggal Pembelian/BKU and strip any Lunas date -->
+    
+
+    <!-- OVERRIDE: Jumlah di ✘-Arkas ambil dari nilai BULAN (bukan harga satuan) -->
+    
+
+    <!-- OVERRIDE V2: Pakai nilai BULAN untuk #jumlah (pakai setTimeout agar menimpa handler lama) -->
+    
+
+    <!-- === Override Export Excel: pewarnaan per No Bukti & sinkron antar‑sheet === -->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- PATCH: fix #editSave (undefined uraianDenganPrefix & duplicate bindings) -->
+
+
+<!-- PATCH: Persist Nama Pegawai & Belanja (add/edit) via localStorage and sync to selects -->
+
+
+<!-- PATCH: Force-persist Nama Pegawai & Belanja into row dataset + common stores -->
+
+
+<!-- PATCH: Durable persistence for Nama Pegawai & Belanja lists -->
+
+
+    <script src="js/app.js"></script>
+    <script src="js/persist.js"></script>
+</body>
+</html>
